@@ -1,5 +1,6 @@
 package a;
 
+
 public interface IConta {
 	
 	void sacar(double valor);

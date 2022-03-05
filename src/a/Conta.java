@@ -1,5 +1,6 @@
 package a;
 
+
 public abstract class Conta implements IConta {
 	
 	protected static int AGENCIAL_PADRAO = 0001;
