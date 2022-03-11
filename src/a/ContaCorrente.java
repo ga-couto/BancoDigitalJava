@@ -1,21 +1,38 @@
 package a;
 
+import a.Excecoes.ContaNaoEncontradaException.SaldoNegativoException;
+import a.Excecoes.ContaNaoEncontradaException.ValorNegativoException;
 
 public class ContaCorrente extends Conta {
 
 	
 	
 	
-	public ContaCorrente(Cliente cliente) {
-		super(cliente);
-		// TODO Auto-generated constructor stub
+	public ContaCorrente() {
+		
+		
 	}
+	
+	
+	public void realizarEmprestimo(double valorEmprestimo) {
+		double saldo = getSaldo();//Emcapsulamento!!!!!!!
+		if(valorEmprestimo <= 30000) {
+			saldo += valorEmprestimo;
+			setSaldo(saldo);//Atualizando saldo da classe "Conta" através do encapsulamento!
+		}else {
+			System.out.println("Seu limite é de R$30.000,00. Não podemos liberar esse empréstimo!");
+		}
+	}
+	
 
 	@Override
 	public void imprimirExtrato() {
 		System.out.println("--- Seu Extrato - Conta Corrente --- \n");
 		super.imprimirDadosConta();
 	}
+	
+	
+	
 
 			
 	
