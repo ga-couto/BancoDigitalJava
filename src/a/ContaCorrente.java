@@ -1,7 +1,5 @@
 package a;
 
-import a.Excecoes.ContaNaoEncontradaException.SaldoNegativoException;
-import a.Excecoes.ContaNaoEncontradaException.ValorNegativoException;
 
 public class ContaCorrente extends Conta {
 

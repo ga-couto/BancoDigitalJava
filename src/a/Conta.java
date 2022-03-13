@@ -2,9 +2,6 @@ package a;
 
 import java.util.Scanner;
 
-import a.Excecoes.ContaNaoEncontradaException.SaldoNegativoException;
-import a.Excecoes.ContaNaoEncontradaException.ValorNegativoException;
-
 public abstract class Conta implements IConta {
 	
 	protected static int AGENCIAL_PADRAO = 0001;

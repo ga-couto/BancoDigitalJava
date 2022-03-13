@@ -8,19 +8,19 @@ public class Menu {
 		//ContaCorrente contaCorrente = null;   -> Se eu liberar essa variável, consigo chamala na opcao 5 "Empréstimo" mas irei utilizar um alterador (instanceof) para chamar o empréstimo.
 		//ContaPoupanca contaPoupanca = null;
 	private Scanner scan;
-	public Registro [] registros; //Criando array de registros
+	public Cliente [] registros; //Criando array de registros
 	private Conta [] contas;
 	public Cartao [] cartoes;
 	Conta conta;
 	Conta contaDestino;
 	Cartao cartao;
-	Registro registro;
+	Cliente registro;
 	int opcaoValidada;
 	
 	
 	public Menu(Scanner scan) {
 		this.scan = scan;
-		registros = new Registro[10];
+		registros = new Cliente[10];
 		contas = new Conta[10];
 		cartoes = new Cartao[10];
 		
@@ -73,7 +73,7 @@ public class Menu {
 	public void selecionaOpcaoMenu(int opcao) {
 		switch(opcao) {
     	case 1:{
-    		Registro registro = new Registro();
+    		Cliente registro = new Cliente();
     		System.out.println("Digite seu nome: ");
     		registro.setNome(scan.next());
     		
