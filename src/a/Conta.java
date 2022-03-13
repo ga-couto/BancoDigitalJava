@@ -16,7 +16,7 @@ public abstract class Conta implements IConta {
 	protected double saldo;
 	protected Cliente cliente;
 	protected Cartao cartao;
-	
+	Registro registro = new Registro();
 	public Conta() {
 		this.agencia = Conta.AGENCIAL_PADRAO;
 		this.numeroConta = SEQUENCIAL++;
@@ -57,30 +57,31 @@ public abstract class Conta implements IConta {
 		setSaldo(saldo - 1);
 	}
 	public void cobrarTaxaDeSaque() {
-		double saldo = getSaldo();
-		setSaldo(saldo - 1);
+		double saldoTaxa = getSaldo();
+		setSaldo(saldoTaxa - 1);
 	}
 	
 	public double sacar(double valorSaque) {
-		double saldo = getSaldo();
-		if (valorSaque > 0) {
-			saldo -= valorSaque;
+		double saldoAgora = getSaldo();
+		System.out.println("Seu saldo era de "+saldoAgora);
+		if (valorSaque > 0 && valorSaque <= getSaldo()) {
+			saldoAgora -= valorSaque;
 		}
-		setSaldo(saldo);
+		setSaldo(saldoAgora);
 		cobrarTaxaDeSaque();
 		return getSaldo();
 	}
 	
 	
-	public void solicitarCartao(String nome, short tipoCartao) {
-		Cartao novoCartao = new Cartao();  //Criando novo cartão!
-		setCartao(novoCartao);
-		getCartao().setTitular(nome);
-		getCartao().setTipo(tipoCartao);
+	public void solicitarCartao(String titular) {
+		Cartao cartao = new Cartao(); //Criando novo cartão!
+		setCartao(cartao);
+		getCartao().setTitular(titular);
 	}
 	@Override
 	public double depositar(double valorDepositado) {
 		double saldo = getSaldo();
+		System.out.println("Seu saldo era de "+saldo);
 		if (valorDepositado > 0) {
 			saldo += valorDepositado;
 		}
@@ -91,6 +92,7 @@ public abstract class Conta implements IConta {
 	@Override
 	public void transferir(double valorDepositadoNaContaDestino, IConta contaDestino) {
 		double saldo = getSaldo();
+		System.out.println("Seu saldo era de "+saldo);
 		setSaldo(saldo - valorDepositadoNaContaDestino);
 		cobrarTaxaDeServicoQualquerConta();
 		contaDestino.depositar(valorDepositadoNaContaDestino);
@@ -98,7 +100,7 @@ public abstract class Conta implements IConta {
 	
 	protected void imprimirDadosConta() {
 		
-		System.out.printf("Cliente: %s\n", this.cliente.getNome());
+		System.out.printf("Cliente: %s\n", registro.getNome());
 		System.out.printf("Conta: %d\n", this.numeroConta);
 		System.out.printf("Agencia: %d\n", this.agencia);
 		System.out.printf("Saldo: %.2f\n", this.saldo);

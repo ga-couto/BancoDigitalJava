@@ -2,20 +2,14 @@ package a;
 
 public class Registro {
 	
-	String registro;
+	
 	String nome;
 	String telefone;
-	String anoNacimento;
+	int anoNacimento;
 	String email;
 	String endereco;
 
-	public String getRegistro() {
-		return registro;
-	}
-
-	public void setRegistro(String registro) {
-		this.registro = registro;
-	}
+	
 
 	public String getNome() {
 		return nome;
@@ -33,11 +27,11 @@ public class Registro {
 		this.telefone = telefone;
 	}
 
-	public String getAnoNacimento() {
+	public int getAnoNacimento() {
 		return anoNacimento;
 	}
 
-	public void setAnoNacimento(String anoNacimento) {
+	public void setAnoNacimento(int anoNacimento) {
 		this.anoNacimento = anoNacimento;
 	}
 

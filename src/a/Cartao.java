@@ -3,10 +3,10 @@ package a;
 public class Cartao {
 	
 	
-	protected String titular;
+	public String titular;
 	protected Cartao cartao;
-	protected short tipo; //?????????????????????/
 	protected short tipoCartao; //?????????????????????/
+	//protected short tipoCartao; //?????????????????????/
 	
 	public Cartao() {
 		
@@ -32,26 +32,6 @@ public class Cartao {
 	}
 
 
-	public short getTipo() {
-		return tipo;
-	}
-
-
-	public void setTipo(short tipo) {
-		this.tipo = tipo;
-	}
-
-
-	public short getTipoCartao() {
-		return tipoCartao;
-	}
-
-
-	public void setTipoCartao(short tipoCartao) {
-		this.tipoCartao = tipoCartao;
-	}
-	
-	
 	
 	
 }
