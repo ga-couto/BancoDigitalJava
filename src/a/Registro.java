@@ -5,11 +5,14 @@ public class Registro {
 	
 	String nome;
 	String telefone;
-	int anoNacimento;
+	String anoNacimento;
 	String email;
 	String endereco;
-
 	
+
+	public Registro() {
+		super();
+	}
 
 	public String getNome() {
 		return nome;
@@ -27,11 +30,11 @@ public class Registro {
 		this.telefone = telefone;
 	}
 
-	public int getAnoNacimento() {
+	public String getAnoNacimento() {
 		return anoNacimento;
 	}
 
-	public void setAnoNacimento(int anoNacimento) {
+	public void setAnoNacimento(String anoNacimento) {
 		this.anoNacimento = anoNacimento;
 	}
 

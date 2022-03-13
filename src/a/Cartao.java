@@ -3,13 +3,14 @@ package a;
 public class Cartao {
 	
 	
+	private static int SEQUENCIAL_CARTAO = 001;
+	
 	public String titular;
-	protected Cartao cartao;
-	protected short tipoCartao; //?????????????????????/
-	//protected short tipoCartao; //?????????????????????/
+	protected short tipoCartao;
+	public int numeroCartao;
 	
 	public Cartao() {
-		
+		this.numeroCartao = SEQUENCIAL_CARTAO++;
 	}
 	
 
@@ -22,13 +23,14 @@ public class Cartao {
 	}
 
 
-	public Cartao getCartao() {
-		return cartao;
+
+	public int getNumeroCartao() {
+		return numeroCartao;
 	}
 
 
-	public void setCartao(Cartao cartao) {
-		this.cartao = cartao;
+	public void setNumeroCartao(int numeroCartao) {
+		this.numeroCartao = numeroCartao;
 	}
 
 

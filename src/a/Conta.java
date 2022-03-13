@@ -9,20 +9,23 @@ public abstract class Conta implements IConta {
 	
 	protected static int AGENCIAL_PADRAO = 0001;
 	private static int SEQUENCIAL = 001;
-
+	
+	
 	
 	protected int agencia;
 	protected int numeroConta;
 	protected double saldo;
-	protected Cliente cliente;
 	protected Cartao cartao;
-	Registro registro = new Registro();
+	protected Menu menu;
+	
 	public Conta() {
 		this.agencia = Conta.AGENCIAL_PADRAO;
 		this.numeroConta = SEQUENCIAL++;
 		
 	}
 	
+
+
 
 	public int getAgencia() {
 		return agencia;
@@ -54,11 +57,16 @@ public abstract class Conta implements IConta {
 	}
 	public void cobrarTaxaDeServicoQualquerConta() {
 		double saldo = getSaldo();
-		setSaldo(saldo - 1);
+		if (getSaldo() > 0 && getSaldo() <= getSaldo()) {
+			setSaldo(saldo - 5);			
+		}
 	}
 	public void cobrarTaxaDeSaque() {
 		double saldoTaxa = getSaldo();
-		setSaldo(saldoTaxa - 1);
+		if (getSaldo() > 0 && getSaldo() <= getSaldo()){
+			setSaldo(saldoTaxa - 2);
+		}
+		
 	}
 	
 	public double sacar(double valorSaque) {
@@ -66,6 +74,8 @@ public abstract class Conta implements IConta {
 		System.out.println("Seu saldo era de "+saldoAgora);
 		if (valorSaque > 0 && valorSaque <= getSaldo()) {
 			saldoAgora -= valorSaque;
+		}else {
+			System.out.println("Você não possui saldo para realizar este saque. Seu saldo é de: ");
 		}
 		setSaldo(saldoAgora);
 		cobrarTaxaDeSaque();
@@ -75,8 +85,9 @@ public abstract class Conta implements IConta {
 	
 	public void solicitarCartao(String titular) {
 		Cartao cartao = new Cartao(); //Criando novo cartão!
-		setCartao(cartao);
-		getCartao().setTitular(titular);
+		cartao.setTitular(titular);
+		System.out.println("Titular: "+ cartao.getTitular());
+		System.out.println("Número do Cartao: "+ cartao.getNumeroCartao());
 	}
 	@Override
 	public double depositar(double valorDepositado) {
@@ -92,15 +103,15 @@ public abstract class Conta implements IConta {
 	@Override
 	public void transferir(double valorDepositadoNaContaDestino, IConta contaDestino) {
 		double saldo = getSaldo();
-		System.out.println("Seu saldo era de "+saldo);
+		System.out.println("Seu saldo era de "+ saldo);
 		setSaldo(saldo - valorDepositadoNaContaDestino);
 		cobrarTaxaDeServicoQualquerConta();
-		contaDestino.depositar(valorDepositadoNaContaDestino);
+		System.out.println("Seu saldo era de "+ saldo);
 	}
 	
 	protected void imprimirDadosConta() {
 		
-		System.out.printf("Cliente: %s\n", registro.getNome());
+		System.out.println("");
 		System.out.printf("Conta: %d\n", this.numeroConta);
 		System.out.printf("Agencia: %d\n", this.agencia);
 		System.out.printf("Saldo: %.2f\n", this.saldo);
@@ -110,9 +121,9 @@ public abstract class Conta implements IConta {
 	@Override
 	public String toString() {
 		return "Conta{"+
-				"numero="+ numeroConta +
-				", saldo="+ saldo +
-				", cartao="+ cartao +
+				"/ numero= "+ numeroConta +
+				"/ saldo= "+ saldo +
+				"/ cartao= "+ cartao +
 				"}";
 	}
 	

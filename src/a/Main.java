@@ -15,7 +15,6 @@ public class Main {
     										// O Objeto (Classe Menu) Depende dessa variável "scan" criada. No momento que vou contruir o menu através do "Menu menu = new Menu(scan)" preciso passar o scan para informar que tem que utilizar o scan da classe "Menu".
 	Menu menu = new Menu(scan);// Aqui passa o "scan" como parametro do construtor da classe "Menu".
 	//		Registro registro = null;
-	
 	//		Conta conta = null;
 	
 	int opcao;
